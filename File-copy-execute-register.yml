@@ -1,0 +1,21 @@
+--- #Example of File-copy-execute-register
+
+- hosts: all
+  connection: ssh
+  user: root
+  become: yes
+  gather_facts: yes
+  tasks:
+   - name: creation of file
+     file: path=/root/myscript.sh owner=root state=touch mode=0777
+   - name: copying file test.sh
+     copy: src=/root/playbooks/firstscript.sh dest=/root/myscript.sh
+   - name: executing sheel script
+     shell: ./myscript.sh > logfile.txt
+     register: RES1
+   - debug: var=RES1
+   - name: List of files in my playbook directory
+     raw: ls -lart >> appendfile.txt
+     register: RES2
+   - debug: var=RES2
+

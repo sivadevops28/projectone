@@ -1,0 +1,13 @@
+--- EXAMPLE OF ARCHIVING THE FILES 
+
+- hosts: localhost
+  user: root
+  connection: ssh
+  gather_facts: yes
+  become: yes
+  tasks:
+#  - name: logginng history
+#    command: history > /root/logs/history.log
+  - name: Archiveing history log file
+    environment:
+    archive: path=/root/roles/webserver.yml format=zip

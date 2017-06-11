@@ -1,0 +1,15 @@
+--- #Example of running once playbook
+
+- hosts: localhost
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: run the uptime command on all hosts and log it
+    raw: /usr/bin/uptime >> /root/playbooks/uptime.log
+    run_once: true
+  - name: list the /var directory and log
+    raw: ls -al /var >> /root/playbooks/dir.list
+    run_once: true
+  

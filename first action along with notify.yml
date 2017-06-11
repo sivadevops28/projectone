@@ -1,0 +1,17 @@
+--- #Example of first action along with notify
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Install nginx
+    action: yum name=nginx state=latest
+    notify: RESTARTNGINX
+  - name: Enabling NGINX services after reboot
+    service: name=nginx enabled=yes
+  handlers:
+  - name: RESTARTNGINX
+    service: name=nginx state=started
+

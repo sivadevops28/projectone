@@ -1,0 +1,14 @@
+--- #Example of template using jinja2
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  vars:
+   username: root
+   password: pass@123
+   connectiontype: sftp
+  tasks:
+   - name: install the configuration file customized for the system
+     template: src=/root/playbooks/mytemplates/test.conf.j2 dest=/root/test1.conf owner=root mode=750

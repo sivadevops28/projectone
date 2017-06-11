@@ -1,0 +1,10 @@
+--- #Example of first action
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Install nginx
+    action: yum name=nginx state=latest

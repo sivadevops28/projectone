@@ -1,0 +1,18 @@
+--- #Example of Nginx stop and httpd install and reboot
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: stop nginx
+    service: name=nginx state=stopped
+  - name: install httpd
+    yum: name=httpd state=latest
+    notify: RESTARTHTTPD
+  - name: enabling httpd service after reboot
+    service: name=httpd enabled=yes
+  handlers:
+  - name: RESTARTHTTPD
+    service: name=httpd state=started

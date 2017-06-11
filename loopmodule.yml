@@ -1,0 +1,19 @@
+--- #Example of loop module
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+   - name: Add a list of users
+     user: name={{ item }} state=present password=pass@123 group=wheel expires=06052020
+     with_items:
+       - india
+       - emgland
+       - srilanka
+       - newzealand
+       - pakistan
+   - name: remove a list
+     user: name=pakistan state=absent group=wheel
+
