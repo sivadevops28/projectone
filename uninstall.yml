@@ -1,0 +1,16 @@
+--- # removing installed packages
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: remove installed packages
+    yum: name={{ items }} state=absent
+    with_items:
+     - httpd
+     - telnet
+     - tree
+     - elinks
+

@@ -1,0 +1,12 @@
+--- #example of when condition
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: restart httpd service 
+    raw: name=httpd state=restarted
+  - name: enebling servvice after reboot
+    raw: name=apache2 state=restarted

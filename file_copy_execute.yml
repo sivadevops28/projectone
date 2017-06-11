@@ -1,0 +1,21 @@
+--- # example of file_copy_execute
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: creation of file
+    file: path=/root/myscript.sh owner=root state=touch mode=0777
+  - name: copying file firstscript.sh
+    action: copy src=/root/playbooks/firstscript.sh dest=/root/myscript.sh
+  - name: executing shell script
+    shell: ./myscript.sh > myscript.log
+    register: RES1
+  - debug: var=RES1
+  - name: list of files in my playbook directory
+    raw: ls -lart > log.log
+    register: RES2
+  - debug: var=RES2
+    

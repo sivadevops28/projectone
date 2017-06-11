@@ -1,0 +1,11 @@
+   deleted by us:      GITHUB_NEW.txt
+#       deleted by us:      archive.yml
+#       deleted by us:      dir.list
+#       both added:         gittest.txt
+#       deleted by us:      include.yml
+#       deleted by us:      jinjatemplate.yml
+#       deleted by us:      unarchive.yml
+#       deleted by us:      uptime.log
+#       both added:         usermodule.yml
+#       deleted by us:      webserver.yml
+#
