@@ -1,0 +1,10 @@
+--- # EXAMPLE OF DNF
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Remove tree package using DNF
+    dnf: name=tree state=absent

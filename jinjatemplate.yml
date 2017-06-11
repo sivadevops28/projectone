@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+--- # Testing the J2 template module
+
+- hosts: all
+  user: root
+  gather_facts: yes
+  become: yes
+  connection: ssh
+  vars:
+   username: kalyan
+   userpassword: shiva@123
+   connectiontype: http
+  tasks:
+   - name: Installing the configuration file for the system
+     template: src=/root/playbooks/mytemplates/test.conf.j2 dest=/root/test1.conf owner=root mode=750
+=======
 ---
 
 - hosts: all
@@ -13,3 +29,4 @@
    - name: Install the configuration file customized for the system
      template: src=/root/playbooks/templates/test.conf.j2 dest=/root/test1.conf owner=root mode=750
  
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f

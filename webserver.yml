@@ -1,3 +1,28 @@
+<<<<<<< HEAD
+--- # Control Playbook for webserver role
+
+- hosts: localhost webserver
+  connection: ssh
+  user: root
+  become: yes
+  gather_facts: yes
+  pre_tasks:
+  - name: when the role start
+    raw: date > /root/playbooks/startofrole.log
+  - name: Remove httpd and telnet packages
+    raw: yum -y remove httpd telnet
+  - name: Removing logfile.txt on servers
+    raw: rm -rf logfile.txt 
+  - name: Remove dummy.sh
+    raw: rm -rf dummy.sh
+  roles:
+  - webserver
+  post_tasks:
+  - name: when did the role finished
+    raw: date > /root/playbooks/endofrole.log
+  - name: Install telnet
+    action: yum name=telnet state=latest 
+=======
 --- #CONTROL PLAYBOOK FOR WEBSRVER
 
 - hosts: all
@@ -24,3 +49,4 @@
   post_tasks:
   - name: End of Playbook
     raw: date > /root/logs/End_of_webserver_playbook.log
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f

@@ -1,0 +1,9 @@
+--- # Example for cron
+- user: root
+  hosts: all
+  gather_facts: yes
+  connection: ssh
+  become: yes
+  tasks:
+   - name: add  cron job to the user
+     cron: name="list dirs" minute="22" hour="7" job="ls -al /root/playbooks > /root/cron.log"

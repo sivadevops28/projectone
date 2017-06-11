@@ -1,0 +1,9 @@
+--- # yum
+- hosts: all
+  user: root
+  become: yed
+  gather_facts: yes
+  connection: ssh
+  tasks:
+   - name: Equivalent of YUM UPGRADE
+     action: yum name=* state=latest
