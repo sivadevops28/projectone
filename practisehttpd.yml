@@ -1,0 +1,18 @@
+--- #installing nginx
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: stop nginx
+    service: name=nginx state=stopped
+  - name: installing httpd
+    yum: name=httpd state=latest
+    notify: restarthttpd
+  - name: enabling service after reebot
+    service: name=httpd enabled=yes
+  handlers:
+   - name: restarthttpd
+     service: name=httpd state=restarted

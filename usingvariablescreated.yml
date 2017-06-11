@@ -1,0 +1,21 @@
+--- #example of using variables defined internally and externally
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: no
+  vars:
+   playbookversion: 2.1.2
+   playbookauthor: its me
+  vars_files:
+   - /root/playbooks/mycopyright.yml
+   - /root/playbooks/mydefault.yml
+  vars_prompt:
+   - name: packagetoinstall
+     prompt: which package would you like to install ?
+     default: telnet
+     private: yes
+  tasks:
+   - name: install the package mentioned
+     yum: name={{ packagetoinstall }} state=latest

@@ -1,0 +1,44 @@
+<<<<<<< HEAD
+--- EXAMPLE OF ARCHIVING THE FILES 
+
+- hosts: localhost
+  user: root
+  connection: ssh
+  gather_facts: yes
+  become: yes
+  tasks:
+#  - name: logginng history
+#    command: history > /root/logs/history.log
+  - name: Archiveing history log file
+    environment:
+    archive: path=/root/roles/webserver.yml format=zip
+=======
+---
+<<<<<<< HEAD
+  
+- hosts: localhost
+  user: root
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  tasks: 
+  - name: archievin main.ym in webservers role
+    environment:
+    archive: path=/root/appserver.yml dest=/root/playbooks/appservermain.zip format=zip
+
+    
+=======
+
+- hosts: localhost
+  user: root 
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+# - name: logging history
+#   command: history > /root/logs/history.log
+  - name: archiveinghistory log file
+    environment:
+    archive: path=/root/roles/webserver.yml format=zip
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f
+>>>>>>> 0227605a5d8cdfa10118206f108658ba5914c574

@@ -1,0 +1,13 @@
+--- # EXAMPLE OF WHEN CONDITION
+
+- hosts: all
+  user: root
+  connection
+
+
+- name: Install httpd on Redhat distribution
+  yum: name=httpd state=installed
+  when: ansible_os_family=='RedHat'
+- name: Install apache2 on Debian distribution
+  yum: name=apache2 state=installed
+  when: ansible_os_family=='Debian'

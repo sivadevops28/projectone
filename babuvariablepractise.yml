@@ -1,0 +1,24 @@
+--- # examples of using  variables
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  vars:
+   playbookversion: 1.1.0
+   playbookauthor: babu
+   FIRSTNAME: BABU
+   LASTNAME: REDDY
+  vars_files:
+   - /root/playbooks/mycopyright.yml
+   - /root/playbooks/mydefault.yml
+  vars_prompt:
+   - name: packagetoinstall
+     prompt: which package would you like to install ?
+     default: telnet
+     private: yes
+  tasks:
+   - name: install the package mentioned
+     yum: name={{ packagetoinstall }} state=latest
+   - debug: msg="MY FULL NAME IS {{ FIRSTNAME }} {{ LASTNAME }}"

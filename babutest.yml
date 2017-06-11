@@ -1,0 +1,39 @@
+--- #example of handlers
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Install the below list of packages
+    yum: name={{ item }} state=installed
+    with_items:
+     - tree
+     - facter
+     - elinks
+  - name: Install HTTPD on REDHAT
+    yum: name=httpd state=installed
+    when: ansible_os_family=='RedHat'
+    notify: ENABLEHTTPD 
+  - name:  Install APACHE2 on DEBIAN
+    yum: name=APACHE2 state=installed
+    when: ansible_os_family=='Debian'
+    notify: ENABLEAPACHE2
+  - name: restart httpd services
+    raw: systemctl restart httpd 
+    when: ansible_os_family=='RedHat'
+  - name: restart apache2 services
+    raw: systemctl restart apache2
+    when: ansible_os_family=='Debian'
+  - name: checking status on httpd
+    raw: systemctl status httpd
+    when: ansible_os_family=='RedHat'
+  - name: checking ststus on apache2
+    raw: systemctl status apache2
+    when: ansible_os_family=='Debian'
+  handlers:
+   - name: ENABLEHTTPD
+     service: name=httpd enabled=yes
+   - name: ENABLEAPACHE2
+     service: name=apache2 enabled=yes
