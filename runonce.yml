@@ -1,0 +1,30 @@
+<<<<<<< HEAD
+--- # run once
+- hosts: localhost
+  user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  tasks:
+  - name: run the uptime command all hosts and log it
+    raw: ansible all -m ping >> /root/uptime.log
+    run_once: true
+  - name: List of files in directory
+    raw: ls -lart /home > /root/dir.list
+=======
+---
+
+- hosts: localhost
+  user: root
+#  sudo: yes
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Run the uptime command all hosts and log it
+    raw: /usr/bin/uptime >> /root/playbooks/uptime.log
+    run_once: true
+  - name: List the /var directory and log
+    raw: ls -al /var >> /root/playbooks/dir.list
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f
+    run_once: true

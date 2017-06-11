@@ -1,0 +1,35 @@
+
+taskscexit
+
+
+
+==================
+vars
+
+x
+Author: Shivananda
+WEBSERVER_ROLE_VERSION: 1.0
+redhat_apache: httpd
+debian_apache: apache2
+
+========================
+- name: RESTARTHTTPD
+  service: name={{ redhat_apache }} state=started
+- name: RESTARTAPACHE2
+  service: name={{ debian_apache }} state=started
+
+===================================
+--- # Control Playbook for webserver role
+
+- hosts: localhost webserver
+  connection: ssh
+  user: root
+  become: yes
+  gather_facts: yes
+  pre_tasks:
+  - name: when the role start
+    raw: date > /root/playbooks/startofrole.log
+  - name: Remove httpd and telnet packages
+    raw: yum -y remove httpd telnet
+  - name: Removing logfile.txt on servers
+    c

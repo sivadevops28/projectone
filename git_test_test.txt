@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 practising github
 hello world
 hi i am the world... robo2
@@ -7,3 +8,8 @@ I AM KIRAN
 
 I AM working 
 >>>>>>> 20f141ae3d9375de6170b71e26379eff23f9f657
+=======
+I AM KIRAN
+
+I AM working 
+>>>>>>> d070c0f80f928b1e322ff43ed7c8bba4baa32133
