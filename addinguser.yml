@@ -1,0 +1,10 @@
+--- # adding user
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: adding the user siva
+    user: name=siva state=present
+  

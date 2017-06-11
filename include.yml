@@ -1,0 +1,10 @@
+--- # Including list_packages.yml and check_packages.yml
+
+- hosts: all
+  user: root
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+  - include: /root/playbooks/list_packages.yml
+  - include: /root/playbooks/check_packages.yml

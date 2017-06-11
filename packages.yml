@@ -1,0 +1,14 @@
+--- # installing telnet,tree and lynx packages
+- hosts: all
+  user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  tasks:
+  - name: installing telnet,tree and lynx packages
+    action: yum name=telnet state=present
+  - name: installing tree packages
+    action: yum name=tree state=present
+  - name: installing lynx package
+    action: yum name=lynx state=present
+

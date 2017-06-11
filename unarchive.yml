@@ -1,0 +1,12 @@
+---
+  
+- hosts: localhost
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Unarchiving the main.tgz
+    environment:
+    unarchive: src=/root/playbooks/appservermain.zip dest=/root/playbooks
+  

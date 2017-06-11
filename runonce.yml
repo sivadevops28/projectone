@@ -1,0 +1,13 @@
+--- # run once
+- hosts: localhost
+  user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  tasks:
+  - name: run the uptime command all hosts and log it
+    raw: ansible all -m ping >> /root/uptime.log
+    run_once: true
+  - name: List of files in directory
+    raw: ls -lart /home > /root/dir.list
+    run_once: true

@@ -1,0 +1,16 @@
+--- # prompt for user package for example
+- hosts: all
+  user: root
+  gather_facts: yes
+  connection: ssh
+  become: yes
+  vars:
+   playbook_version: 0.01b
+  vars_prompt:
+   - name: pkgtoinstall
+     prompt: Install Which package
+     default: telnet
+     private: yes
+  tasks:
+   - name: install indicated package
+     yum: name={{ pkgtoinstall }} state=latest

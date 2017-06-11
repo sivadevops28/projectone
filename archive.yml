@@ -1,0 +1,13 @@
+---
+  
+- hosts: localhost
+  user: root
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  tasks: 
+  - name: archievin main.ym in webservers role
+    environment:
+    archive: path=/root/appserver.yml dest=/root/playbooks/appservermain.zip format=zip
+
+    

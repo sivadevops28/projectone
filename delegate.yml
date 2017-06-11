@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  user: root
+  gather_facts: yes
+  connection: ssh
+  become: yes
+  tasks:
+  - name: installing the tree package
+    raw: yum -y install tree
+    delegate_to: 127.0.0.1
+  

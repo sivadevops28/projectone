@@ -1,0 +1,18 @@
+--- # Example of until Module
+
+- hosts: localhost
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks: 
+  - name: Installing httpd
+    action: yum name=httpd state=installed
+  - name: RESTARTHTTPD
+    service: name=httpd state=started
+  - name: verify the httpd service status
+    shell: systemctl status httpd
+    register: result
+    until: result.stdout.find("active (running)")
+    ignore_errors: yes
+  - debug: var=result
