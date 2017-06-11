@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --- # Including list_packages.yml and check_packages.yml
 
 - hosts: all
@@ -8,3 +9,15 @@
   tasks:
   - include: /root/playbooks/list_packages.yml
   - include: /root/playbooks/check_packages.yml
+=======
+--- # Include Tasks Example
+
+- hosts: local
+  user: root
+  sudo: yes
+  connection: ssh
+  gather_facts: no 
+  tasks:
+    - include: /root/list_packages.yml
+    - include: /root/check_packages.yml
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f

@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 --- # Example of until Module
 
+=======
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f
 - hosts: localhost
   user: root
   connection: ssh
   become: yes
   gather_facts: yes
+<<<<<<< HEAD
   tasks: 
   - name: Installing httpd
     action: yum name=httpd state=installed
@@ -15,4 +19,13 @@
     register: result
     until: result.stdout.find("active (running)")
     ignore_errors: yes
+=======
+  tasks:
+  - name: Checking service status of nginx
+    raw: systemctl status nginx > /root/nginx.log
+    register: result
+    until: result.stdout.find("active (running)") != -1
+    retries: 5
+    delay: 15
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f
   - debug: var=result

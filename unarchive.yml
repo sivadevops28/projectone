@@ -1,12 +1,23 @@
+<<<<<<< HEAD
 ---
   
+=======
+--- # EXAMPLE OF WEBSERVER.YML.ZIP FILE
+
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f
 - hosts: localhost
   user: root
   connection: ssh
   become: yes
   gather_facts: yes
   tasks:
+<<<<<<< HEAD
   - name: Unarchiving the main.tgz
     environment:
     unarchive: src=/root/playbooks/appservermain.zip dest=/root/playbooks
   
+=======
+  - name: unarchiveing webserver.yml.zip
+    environment:
+    unarchive: src=/root/roles/webserver.yml.zip dest=/root/playbooks
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f

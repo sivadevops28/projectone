@@ -1,0 +1,21 @@
+--- #
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  vars:
+   - playbookversion: 2.7.5
+     playbookauthor: SIVA
+  vars_files:
+  - /root/playbooks/copyright.yml
+  - /root/playbooks/webdefaults.yml
+  vars_prompt:
+  - name: pkgtoinstall
+    prompt: which package to install?
+    default: telnet
+    private: no
+  tasks:
+  - name: Install the mentioned package   
+    yum: name={{ pkgtoinstall }} state=latest 

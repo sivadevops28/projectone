@@ -1,0 +1,10 @@
+--- #My action_service playbook
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Installing nginx package
+    action: yum name=nginx state=latest

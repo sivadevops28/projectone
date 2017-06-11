@@ -1,0 +1,22 @@
+Create a repository in github
+
+Go to settings click on DEPLOY KEYS add new key of the remote server (.ssh/id_rsa.pub)
+
+git remote add origin git@github.com:kalyanmandala/git_playbooks.git
+
+git add *
+
+git commit -m "THIS IS INITIAL COMMIT"
+
+git push -u origin master
+
+INCASE IF WE WANT TO DO CHANGES IN BRANCH AND TO PUSH THEM TO MASTER
+
+create a file dummy.txt with some content in your remote branch and then add it locally using git add and git commit commands.
+
+git push origin master
+
+
+
+
+

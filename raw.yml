@@ -1,0 +1,12 @@
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Remove httpd services
+    raw: yum -y remove httpd
+  - name: stop Nginx Service
+    raw: systemctl stop nginx
+  - name: Install firefox browser
+    raw: yum install -y firefox
