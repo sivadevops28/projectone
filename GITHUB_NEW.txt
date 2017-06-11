@@ -2,7 +2,11 @@ Create a repository in github
 
 Go to settings click on DEPLOY KEYS add new key of the remote server (.ssh/id_rsa.pub)
 
+<<<<<<< HEAD
 git remote add origin git@github.com:kalyanmandalas/xxxxxxxxx.git
+=======
+git remote add origin git@github.com:kalyanmandala/git_playbooks.git
+>>>>>>> 0227605a5d8cdfa10118206f108658ba5914c574
 
 git add *
 
@@ -17,6 +21,7 @@ create a file dummy.txt with some content in your remote branch and then add it 
 git push origin master
 
 
+<<<<<<< HEAD
 INCASE IF WE WANT TO DO CHANGES IN ORGIN AND PUSH THEM TO LOCAL BRANCH
 
 Create a file on your local machine upload it to your git hub repository
@@ -27,6 +32,8 @@ git pull origin master
 
 git push origin master
 
+=======
+>>>>>>> 0227605a5d8cdfa10118206f108658ba5914c574
 
 
 

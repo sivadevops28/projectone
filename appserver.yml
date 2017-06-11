@@ -1,0 +1,10 @@
+--- # Control Playbook for appserver role
+
+- hosts: appserver
+  connection: ssh
+  user: root
+  become: yes
+  gather_facts: yes
+  roles:
+  - appserver
+

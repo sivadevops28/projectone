@@ -1,0 +1,16 @@
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: stop nginx services
+    service: name=nginx state=stopped
+  - name: Install httpd
+    yum: name=httpd state=latest
+    notify: RESTARTHTTPD
+  - name: Enbaling Httpd services after reboot
+    service: name=httpd enabled=no
+  handlers:
+  - name: RESTARTHTTPD
+    service: name=httpd state=started    

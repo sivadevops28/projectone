@@ -1,0 +1,12 @@
+- name: Verify elinks package is installed
+  raw: yum list installed | grep elinks >> /root/log/pkgs_elinks.log
+  tags:
+   - chk_elinks
+- name: Verify telnet package is  installed
+  raw: yum list installed | grep telnet >> /root/log/pkgs_telnet.log
+  tags:
+   - chk_telnet
+- name: Verify https package is installed
+  raw: yum list installed | grep httpd >> /root/log/pkgs_httpd.log
+  tags:
+   - chk_httpd

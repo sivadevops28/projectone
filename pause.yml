@@ -1,0 +1,14 @@
+--- # The Pause Module
+- hosts: all
+  user: root
+  connection: ssh
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: Install HTTPD
+    action: yum name=httpd state=installed
+  - name: Pausing
+    pause:
+     seconds: 20
+  - name: Verify elinks installation
+    action: yum name=elinks state=present

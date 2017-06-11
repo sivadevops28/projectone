@@ -1,0 +1,9 @@
+--- # installing httpd service
+- hosts: all
+  user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  tasks:
+  - name: installing the httpd service
+    action: yum name=httpd state=present

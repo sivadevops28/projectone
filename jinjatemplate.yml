@@ -1,4 +1,24 @@
+<<<<<<< HEAD
 --- #Example of template using jinja2
+=======
+<<<<<<< HEAD
+--- # Testing the J2 template module
+
+- hosts: all
+  user: root
+  gather_facts: yes
+  become: yes
+  connection: ssh
+  vars:
+   username: kalyan
+   userpassword: shiva@123
+   connectiontype: http
+  tasks:
+   - name: Installing the configuration file for the system
+     template: src=/root/playbooks/mytemplates/test.conf.j2 dest=/root/test1.conf owner=root mode=750
+=======
+---
+>>>>>>> 0227605a5d8cdfa10118206f108658ba5914c574
 
 - hosts: all
   user: root
@@ -6,9 +26,20 @@
   become: yes
   gather_facts: yes
   vars:
+<<<<<<< HEAD
    username: root
    password: pass@123
    connectiontype: sftp
   tasks:
    - name: install the configuration file customized for the system
      template: src=/root/playbooks/mytemplates/test.conf.j2 dest=/root/test1.conf owner=root mode=750
+=======
+    username: sai 
+    password: nellore4get
+    connectiontype: sftp
+  tasks:
+   - name: Install the configuration file customized for the system
+     template: src=/root/playbooks/templates/test.conf.j2 dest=/root/test1.conf owner=root mode=750
+ 
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f
+>>>>>>> 0227605a5d8cdfa10118206f108658ba5914c574

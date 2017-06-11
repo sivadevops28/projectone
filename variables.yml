@@ -1,0 +1,14 @@
+--- # yml playbook
+- hosts: localhost
+  user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  vars:
+   palybook_version: 0.1b
+  vars_files:
+    - vars/copyright.yml
+    - vars/webdefaults.yml
+  
+ 
+

@@ -1,4 +1,33 @@
+<<<<<<< HEAD
 --- #CONTROL PLAYBOOK-WEBSERVER
+=======
+<<<<<<< HEAD
+--- # Control Playbook for webserver role
+
+- hosts: localhost webserver
+  connection: ssh
+  user: root
+  become: yes
+  gather_facts: yes
+  pre_tasks:
+  - name: when the role start
+    raw: date > /root/playbooks/startofrole.log
+  - name: Remove httpd and telnet packages
+    raw: yum -y remove httpd telnet
+  - name: Removing logfile.txt on servers
+    raw: rm -rf logfile.txt 
+  - name: Remove dummy.sh
+    raw: rm -rf dummy.sh
+  roles:
+  - webserver
+  post_tasks:
+  - name: when did the role finished
+    raw: date > /root/playbooks/endofrole.log
+  - name: Install telnet
+    action: yum name=telnet state=latest 
+=======
+--- #CONTROL PLAYBOOK FOR WEBSRVER
+>>>>>>> 0227605a5d8cdfa10118206f108658ba5914c574
 
 - hosts: all
   user: root
@@ -6,6 +35,7 @@
   become: yes
   gather_facts: yes
   pre_tasks:
+<<<<<<< HEAD
   - name: playbook start time
     raw: date > /root/logs/start_webserver_playbook.log
   - name: remove elinks, telnet and httpd packages
@@ -19,3 +49,24 @@
   post_tasks:
   - name: end of playbook
     raw: date > /root/logs/end_of_webserver_playbook.log
+=======
+  - name: Playbook start time
+    raw: date > /root/logs/start_of_webserver_playbook.log
+    tags:
+    - PBSTART
+  - name: Stoping service of nginx
+    service: name=nginx state=stopped
+    ignore_errors: yes
+  - name: Removing the below list of packages
+    yum: name={{ item }} state=absent
+    with_items:
+     - telnet
+     - elinks
+     - httpd
+  roles:
+  - webserver
+  post_tasks:
+  - name: End of Playbook
+    raw: date > /root/logs/End_of_webserver_playbook.log
+>>>>>>> b2019c5225da3e4eb42dee94d0e24a47f105833f
+>>>>>>> 0227605a5d8cdfa10118206f108658ba5914c574

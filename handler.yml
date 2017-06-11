@@ -1,0 +1,18 @@
+--- #My action_service playbook
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: stop  nginx 
+    service: name=nginx state=stopped
+  - name: Install httpd
+    yum: name=httpd state=latest
+    notify: RESTARTHTTPD
+  - name: Enabling HTTPD services after reboot
+    service: name=httpd enabled=no
+  handlers:
+  - name: RESTARTHTTPD
+    service: name=httpd state=started

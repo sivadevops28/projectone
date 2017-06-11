@@ -1,0 +1,14 @@
+--- # Loop PlayBook Example
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Add a list of users
+    user: name={{ item }} state=present password=pass@123 group=wheel expires=06052020
+    with_items:
+       - sachin
+       - sehwag
+       - dhoni

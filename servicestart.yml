@@ -1,0 +1,22 @@
+
+--- #My services start
+
+- hosts: all
+  user: root
+  connection: ssh
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: Installing nginx services
+    yum: name=nginx state=latest 
+    tags:
+     - ngnixinstall
+  - name: restarting the nginx services
+    service: name=nginx  state=restarted
+    tags:
+     - restartingngnix
+  - name: enbaling the nginx services after reboot
+    service: name=nginx enabled=no
+    tags: 
+    - Disablingngnix
+  
