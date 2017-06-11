@@ -1,0 +1,10 @@
+--- # Include Tasks Example
+
+- hosts: local
+  user: root
+  sudo: yes
+  connection: ssh
+  gather_facts: no 
+  tasks:
+    - include: /root/list_packages.yml
+    - include: /root/check_packages.yml

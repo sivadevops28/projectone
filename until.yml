@@ -1,0 +1,13 @@
+- hosts: localhost
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Checking service status of nginx
+    raw: systemctl status nginx > /root/nginx.log
+    register: result
+    until: result.stdout.find("active (running)") != -1
+    retries: 5
+    delay: 15
+  - debug: var=result

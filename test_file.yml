@@ -1,0 +1,16 @@
+--- # Example
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: root
+  tasks:
+  - name: Creation of a file
+    file: path=/root/myscript.sh owner=root state=touch mode=0777
+  - name: copying file test.sh
+    copy: src=/root/playbooks/firstscript.sh dest=/root/myscript.sh
+  - name: executing shell script
+    shell: ./myscript.sh > logfile.txt
+    register: RESULT 
+  - debug: var=RESULT

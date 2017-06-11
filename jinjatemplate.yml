@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  vars:
+    username: sai 
+    password: nellore4get
+    connectiontype: sftp
+  tasks:
+   - name: Install the configuration file customized for the system
+     template: src=/root/playbooks/templates/test.conf.j2 dest=/root/test1.conf owner=root mode=750
+ 

@@ -1,0 +1,11 @@
+--- # EXAMPLE OF WEBSERVER.YML.ZIP FILE
+
+- hosts: localhost
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: unarchiveing webserver.yml.zip
+    environment:
+    unarchive: src=/root/roles/webserver.yml.zip dest=/root/playbooks

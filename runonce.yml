@@ -1,0 +1,15 @@
+---
+
+- hosts: localhost
+  user: root
+#  sudo: yes
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Run the uptime command all hosts and log it
+    raw: /usr/bin/uptime >> /root/playbooks/uptime.log
+    run_once: true
+  - name: List the /var directory and log
+    raw: ls -al /var >> /root/playbooks/dir.list
+    run_once: true

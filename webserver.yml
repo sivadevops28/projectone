@@ -1,0 +1,26 @@
+--- #CONTROL PLAYBOOK FOR WEBSRVER
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  pre_tasks:
+  - name: Playbook start time
+    raw: date > /root/logs/start_of_webserver_playbook.log
+    tags:
+    - PBSTART
+  - name: Stoping service of nginx
+    service: name=nginx state=stopped
+    ignore_errors: yes
+  - name: Removing the below list of packages
+    yum: name={{ item }} state=absent
+    with_items:
+     - telnet
+     - elinks
+     - httpd
+  roles:
+  - webserver
+  post_tasks:
+  - name: End of Playbook
+    raw: date > /root/logs/End_of_webserver_playbook.log

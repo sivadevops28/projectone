@@ -1,0 +1,19 @@
+--- # Example for WHEN CONDITION
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  vars:
+   redhat: httpd
+   debian: apache2
+  tasks:
+  - name: Install httpd on Redhat
+    yum: name={{ redhat }} state=installed
+    when: ansible_os_family=='RedHat'
+    delegate_to: 127.0.0.1  
+  - name: Install apache2 on Debian
+    yum: name={{ debian }} state=installed
+    when: ansible_os_family=='Debain'
+    delegate_to: 127.0.0.1

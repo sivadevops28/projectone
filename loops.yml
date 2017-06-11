@@ -1,0 +1,10 @@
+--- # Loop PlayBook Example
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Add a user
+    user: name={{ 'rana' }} state=present    
