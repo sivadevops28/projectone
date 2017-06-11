@@ -1,0 +1,1 @@
+scp /root/playbooks root@130.211.160.130:/root
