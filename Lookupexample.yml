@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes
+  user: root
+  connection: ssh
+  gather_facts: yes
+  tasks:
+  - debug: msg="{{ lookup('env','HOME') }} is the home directory"
+  - debug: msg="{{ lookup('env','PATH') }} is the PATH defined in env"
+  - debug: msg="Current shell is :"{{ lookup('env','SHELL') }}""

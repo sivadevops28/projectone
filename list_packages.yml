@@ -1,0 +1,12 @@
+- name: Install elinks package
+  action: yum name=elinks state=installed
+  tags:
+   - elinks
+- name: Install telnet package
+  yum: name=telnet state=latest
+  tags:
+   - telnet
+- name: Install httpd package
+  action: yum name=httpd state=installed
+  tags:
+   - httpd

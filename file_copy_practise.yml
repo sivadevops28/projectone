@@ -1,0 +1,21 @@
+--- # example of copying SH file to playbook and running
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: creatnig an empty file and will copy the content of shellscript file created
+    file: path=/root/shscript.sh owner=root state=touch mode=0777
+  - name: copying file shellscript.sh
+    action: copy src=/root/playbooks/shellscript.sh dest=/root/shscript.sh
+  - name: executing shell script
+    shell: ./shscript.sh > shscript.txt
+    register: res1
+  - debug: var=res1
+  - name: displaying list of files in my playbook
+    raw: ls -lart > lart.log
+    register: res2
+  - debug: var=res2
+    

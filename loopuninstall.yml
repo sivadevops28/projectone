@@ -1,0 +1,14 @@
+--- #loop playbook example
+- hosts: all
+  user: root
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: uninstalling a list of packages
+    user: name={{ item }} state=absent 
+    with_items:
+       - tree
+       - telnet
+       - elinks
+  - include: /root/list_packages.yml

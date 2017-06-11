@@ -1,0 +1,13 @@
+--- #Example of WAIT FOR Module
+
+- hosts: all
+  user: root
+  become: yes
+  connection: ssh
+  tasks:
+  - name: Install nginx webserver
+    action: yum name=nginx state=latest
+  - name: starting NGINX services
+    service: name=nginx state=restarted
+  - name: Wait for port 8080
+    wait_for: port=8080 state=started

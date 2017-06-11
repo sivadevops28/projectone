@@ -1,0 +1,39 @@
+--- #Example of installing facter using loop module
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Install facter tree and telnet
+    yum: name={{ item }} state=installed
+    with_items:
+     - facter
+     - tree
+     - telnet
+  - name: Install httpd
+    yum: name=httpd state=latest
+    when: ansible_os_family=='RedHat'
+    notify: restart httpd
+  - name: restart httpd
+    raw: systemctl restart httpd > httpd.log
+    when: ansible_os_family=='RedHat'
+  - name: Checking status on httpd
+    raw: systemctl status httpd >> httpd.log
+    when: ansible_os_family=='RedHat'
+  - name: Install apache2
+    yum: name=apache2 state=latest
+    when: ansible_os_family=='Debian'
+    notify: restart apache2
+ - name: restart apache2
+    raw: systemctl restart apache2 > apache2.log
+    when: ansible_os_family=='Debian'
+  - name: checking status on apache2
+    raw: systemctl status apache2 >> apache2.log
+    when: ansible_os_family=='Debian'
+  handlers:
+   - name: restart httpd
+     service: name=httpd enabled=yes
+   - name: restart apache2
+     service: name=apache2 enabled=yes

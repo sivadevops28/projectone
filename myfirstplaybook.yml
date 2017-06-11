@@ -1,0 +1,11 @@
+
+--- #Example of first playbook
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Remove tomcat apache
+    yum: name=tomcat state=absent

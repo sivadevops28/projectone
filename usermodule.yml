@@ -1,0 +1,26 @@
+<<<<<<< HEAD
+--- #example of user module
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: add the user called tstapache to the apache web client
+    user: name=tst comment="tst user" shell=/bin/bash groups=wheel append=yes
+=======
+--- #Example of user module
+
+- hosts: all
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+  tasks:
+   - name: Add the user called tst apache to teh apache web client
+#     user: name=tst comment="tst user" shell=/bin/bash groups=wheel append=yes
+     user: name=modi password=pass@123 comment="tst user" shell=/bin/bash groups=wheel append=yes expires=06052019
+# Addition of comments for user module
+# Addition os second comment
+>>>>>>> 20f141ae3d9375de6170b71e26379eff23f9f657

@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  user: root
+  connection: ssh
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: uninstall a list of packages
+    user: name={{ item }} state=absent
+    with_items:
+      - telnet
+      - elinks
+      - httpd
+  - include: /root/list_packages.yml
