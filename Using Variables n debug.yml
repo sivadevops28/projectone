@@ -1,0 +1,34 @@
+-- #Example of using variables and debug
+- hosts: localhost
+  user: root
+  connection: ssh
+  become: yes
+  gather_facts: yes
+ # Local variables declaration
+  vars:
+   playbookversion: 1.0
+   playbookauthor: moksha
+   FIRSTNAME: KIRAN
+   LASTNAME: KUMAR
+ # Global Variables
+  vars_files:
+  - /root/copyright.yml
+  - /root/webdefaults.yml
+ #External Variables
+  vars_prompt:
+  - name: pkgtoinstall
+    prompt: which package to install?
+    default: telnet
+    private: yes
+  tasks:
+   - name: Install the mentioned package
+     yum: name={{ pkgtoinstall }} state=latest
+   - debug: var={{ mywebserver }}
+   - debug: var={{ playbookauthor }}
+   - debug: var={{ copyowner }}
+   - debug: msg=" I am learning devops"
+   - debug: msg="My system name is {{ inventory_hostname }}"
+   - debug: msg="My name is {{ copyowner }} and I am learning {{ copyrightname }}"
+   - debug: msg="The current version of my play book is {{ playbookversion }} and author is {{ playbookauthor }}"
+   - debug: msg=" MY full name is {{ FIRSTNAME }} {{ LASTNAME }}"
+

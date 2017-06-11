@@ -1,0 +1,14 @@
+--- #Example os a service restart
+
+- hosts: all
+  user: root
+  connection: ssh
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: Install nginx package
+    action: yum name=nginx state=latest
+  - name: restart nginx service
+    service: name=nginx state=restarted
+  - name: enabling nginx service after server reboot
+    service: name=nginx enabled=yes
